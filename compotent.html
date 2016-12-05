@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vuejs</title>
+	<style type="text/css">
+	#app {
+		width: 400px;
+		height: 300px;
+		margin: 50px auto;
+	}
+	</style>
+</head>
+<body>
+<div id="app">
+	<count></count>
+	<count></count>
+</div>
+<template id="template">
+	<h1>Hello</h1></template>
+	<button>sbub</button>
+</template>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+new Vue({
+		el:'#app'
+		})
+	Vue.component('count',{
+		template:'#template'
+	});
+	
+</script>
+</body>
+</html>

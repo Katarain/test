@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	.compted {
+		color: red;
+	}
+	</style>
+</head>
+<body>
+<div id="app">
+	<!-- <task-app list="tasks"></task-app> -->
+	<h1>MY TAKS
+	<span v-show="remain">{{remain}}</span>
+	</h1>
+	<ul>
+		<li v-for='task in tasks' :class="{'compted':task.comp}" @click='toggle(task)'>
+		{{task.body}}
+		<strong @click="delete(task)">X</strong>
+		</li>
+	</ul>
+</div>
+<!-- <template id="task-template">
+	<ul>
+		<li v-for='task in tasks' :class="{'compted':task.comp}" @click='toggle(task)'>{{task.body}}</li>
+	</ul>
+</template> -->
+<script src="vue.js"></script>
+<script>
+	// Vue.component('task-app',{
+	// 	'template':'#task-template'
+	// })
+
+	new Vue({
+		el:'#app',
+		data: {
+			tasks:[
+			{body:'go to todo',comp:false},
+			{body:'loiarfk sf',comp:false},
+			{body:'sflfsl lfsl',comp:true}
+			]
+		},
+		methods:{
+			toggle:function(task){
+				task.comp=!task.comp;
+			},
+			delete:function(task) {
+				this.tasks.$remove(task);
+
+			}
+		},
+		computed:{
+			remain:function(){
+				return this.tasks.filter(function(task){
+					return !task.comp;
+				}).length;
+			}
+		}
+	})
+</script>
+</body>
+</html>
